@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <changeSet author="jbelcher" failOnError="true" id="Create table location_catagory_menu_item"> 
+    	<createTable tableName="location_category_menu_item">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_by" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_modified_by" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_modified_at" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+            <column name="location_category_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="menu_item_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+    	</createTable>
+    	<addForeignKeyConstraint baseColumnNames="location_category_id"
+		            baseTableName="location_category_menu_item"
+		            constraintName="fk_location_category_menu_item_location_category"
+		            onDelete="CASCADE"
+		            onUpdate="CASCADE"
+		            referencedColumnNames="id"
+		            referencedTableName="location_category"/>
+		<addForeignKeyConstraint baseColumnNames="menu_item_id"
+		            baseTableName="location_category_menu_item"
+		            constraintName="fk_location_category_menu_item_menu_item"
+		            onDelete="CASCADE"
+		            onUpdate="CASCADE"
+		            referencedColumnNames="id"
+		            referencedTableName="menu_item"/>                  
+    	<rollback>
+			<dropTable tableName="location_category_menu_item" />
+		</rollback>
+    </changeSet>
+</databaseChangeLog>

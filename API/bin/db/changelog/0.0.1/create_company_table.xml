@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <changeSet author="jbelcher" failOnError="true" id="Create table catagory"> 
+    	<createTable tableName="company">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_by" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_modified_by" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_modified_at" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="varchar(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="admin_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+    	</createTable>
+    	<addUniqueConstraint catalogName="grubx"
+            columnNames="admin_id"
+            constraintName="const_admin_id"
+            tableName="company"/>
+    	<addForeignKeyConstraint baseColumnNames="address_id"
+		            baseTableName="company"
+		            constraintName="fk_company_address"
+		            onDelete="CASCADE"
+		            onUpdate="CASCADE"
+		            referencedColumnNames="id"
+		            referencedTableName="address"/>
+		<addForeignKeyConstraint baseColumnNames="admin_id"
+		            baseTableName="company"
+		            constraintName="fk_company_user"
+		            onDelete="CASCADE"
+		            onUpdate="CASCADE"
+		            referencedColumnNames="id"
+		            referencedTableName="user"/>
+    	<rollback>
+			<dropTable tableName="company" />
+		</rollback>
+    </changeSet>
+</databaseChangeLog>

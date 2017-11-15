@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <changeSet author="jbelcher" failOnError="true" id="Create table location_catagory"> 
+    	<createTable tableName="location_category">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_by" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+            <column name="location_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+    	</createTable>
+    	<addForeignKeyConstraint baseColumnNames="location_id"
+		            baseTableName="location_category"
+		            constraintName="fk_location_category_location"
+		            onDelete="CASCADE"
+		            onUpdate="CASCADE"
+		            referencedColumnNames="id"
+		            referencedTableName="location"/>
+		<addForeignKeyConstraint baseColumnNames="category_id"
+		            baseTableName="location_category"
+		            constraintName="fk_location_category_category"
+		            onDelete="CASCADE"
+		            onUpdate="CASCADE"
+		            referencedColumnNames="id"
+		            referencedTableName="category"/>                  
+    	<rollback>
+			<dropTable tableName="location_category" />
+		</rollback>
+    </changeSet>
+</databaseChangeLog>
