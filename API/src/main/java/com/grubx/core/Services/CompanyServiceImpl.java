@@ -106,4 +106,9 @@ public class CompanyServiceImpl implements CompanyService {
 	return this.menuItemDaoToMenuItemDto.convertToDto(company.getMenuItems());
     }
 
+    @Override
+    public CompanyDao findOneByAdminId(long adminId) {
+	return this.companyRepository.findOneByAdminId(adminId);
+    }
+
 }

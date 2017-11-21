@@ -1,0 +1,33 @@
+mat-sidenav {
+    width: 200px;
+}
+mat-sidenav-container {
+    background-color: #1fbbe1;
+}
+
+mat-sidenav {
+    background-color: #80D8FF;
+}
+
+.mat-button.hamburger_nav{
+    min-width: 0px;
+    font-size: 22px;
+}
+
+.navbar {
+    min-height: 0px;
+    border-radius: 0px;
+    margin-bottom: 0px;
+}
+.container-fluid {
+    padding: 0px;
+}
+.menu-item {
+    width: 100%;
+}
+.menu-header {
+    font-weight: bold;
+    font-size: 23px;
+    text-align: center;
+    padding: 4px;
+}

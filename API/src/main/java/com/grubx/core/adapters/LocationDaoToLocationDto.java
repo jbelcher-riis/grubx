@@ -30,6 +30,8 @@ public class LocationDaoToLocationDto implements DaoToDtoAdapter<LocationDao, Lo
 	dto.setLatitude(dao.getLatitude());
 	dto.setLongitude(dao.getLongitude());
 	dto.setPhone(dao.getPhone());
+	dto.setEmail(dao.getEmail());
+	dto.setName(dao.getName());
 
 	return dto;
     }

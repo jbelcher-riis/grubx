@@ -21,4 +21,6 @@ public interface CompanyService {
 
     List<MenuItemDto> findMenuItems(long companyId);
 
+    CompanyDao findOneByAdminId(long adminId);
+
 }

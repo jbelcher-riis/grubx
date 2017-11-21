@@ -25,6 +25,12 @@
             <column name="longitude" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
             <column name="latitude" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>

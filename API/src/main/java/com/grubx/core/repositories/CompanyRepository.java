@@ -7,5 +7,5 @@ import com.grubx.core.Daos.CompanyDao;
 
 @Repository
 public interface CompanyRepository extends CrudRepository<CompanyDao, Long> {
-
+    CompanyDao findOneByAdminId(long adminId);
 }

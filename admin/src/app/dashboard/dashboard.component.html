@@ -1,0 +1,22 @@
+
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened="true" #sidenav>
+      <div class="menu-header">GrubX</div>
+      <button type="button" mat-button class="menu-item" routerLink="/dashboard/location-list">Configure Locations/Menu</button>
+  </mat-sidenav>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <button type="button" mat-button (click)="sidenav.toggle()" class="hamburger_nav">
+        <div>
+          <i class="glyphicon glyphicon-menu-hamburger"></i>
+        </div>
+      </button>
+      <button type="button" mat-button (click)="logout()" class="nav navbar-nav navbar-right">
+        <span>
+          Logout
+        </span>
+      </button>
+      </div>
+    </nav>
+  <router-outlet></router-outlet>  
+</mat-sidenav-container>

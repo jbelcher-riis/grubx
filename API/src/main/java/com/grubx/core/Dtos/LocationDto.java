@@ -6,6 +6,8 @@ public class LocationDto {
     private String latitude;
     private String longitude;
     private AddressDto address;
+    private String name;
+    private String email;
 
     public long getId() {
 	return id;
@@ -45,6 +47,22 @@ public class LocationDto {
 
     public void setAddress(AddressDto address) {
 	this.address = address;
+    }
+
+    public String getName() {
+	return name;
+    }
+
+    public void setName(String name) {
+	this.name = name;
+    }
+
+    public String getEmail() {
+	return email;
+    }
+
+    public void setEmail(String email) {
+	this.email = email;
     }
 
 }

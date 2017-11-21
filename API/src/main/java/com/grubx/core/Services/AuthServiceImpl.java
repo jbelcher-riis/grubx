@@ -7,10 +7,12 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import com.grubx.core.Daos.CompanyDao;
 import com.grubx.core.Daos.UserDao;
 import com.grubx.core.Dtos.LoginRequestDto;
 import com.grubx.core.Dtos.LoginResponseDto;
 import com.grubx.core.Dtos.UserDto;
+import com.grubx.core.adapters.CompanyDaoToCompanyDto;
 import com.grubx.core.adapters.UserDaoToUserDtoAdapter;
 import com.grubx.core.components.EncoderFactory;
 import com.grubx.core.components.JwtCreator;
@@ -31,6 +33,12 @@ public class AuthServiceImpl implements AuthService {
     @Autowired
     UserDaoToUserDtoAdapter userDaoToUserDtoAdapter;
 
+    @Autowired
+    CompanyService companyService;
+
+    @Autowired
+    CompanyDaoToCompanyDto companyDaoToCompanyDto;
+
     @Override
     public LoginResponseDto login(LoginRequestDto loginRequest) throws UnsupportedEncodingException {
 	final UserDao user = this.userRepository.findOneByEmail(loginRequest.getEmail());
@@ -44,11 +52,14 @@ public class AuthServiceImpl implements AuthService {
 	}
 
 	final UserDto userDto = this.userDaoToUserDtoAdapter.convertToDto(user);
+	final CompanyDao company = this.companyService.findOneByAdminId(user.getId());
 
 	final LoginResponseDto response = new LoginResponseDto();
 	response.setToken(jwtCreator.makeJwt(user));
 	response.setUser(userDto);
-
+	if (company != null) {
+	    response.setCompany(this.companyDaoToCompanyDto.convertToDto(company));
+	}
 	return response;
     }
 

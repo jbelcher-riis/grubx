@@ -1,0 +1,25 @@
+<mat-card>
+    <mat-card-content>  
+      <div>
+          <button type="button" mat-button routerLink="/dashboard/location" class="nav navbar-nav navbar-right">
+            <span>
+              Add Location
+            </span>
+          </button>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Action</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let location of locations">
+            <td>{{location.name}}</td>
+            <td>{{location.email}}</td>
+            <td>Configure</td>
+          </tr>
+        </tbody>
+      </table>
+  </mat-card-content>
+</mat-card>

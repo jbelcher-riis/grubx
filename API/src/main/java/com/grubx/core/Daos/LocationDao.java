@@ -20,6 +20,8 @@ public class LocationDao extends BaseDao implements Serializable {
     private String phone;
     private String latitude;
     private String longitude;
+    private String name;
+    private String email;
 
     @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
     private final List<LocationCategoryDao> locationCategories = new ArrayList<>();
@@ -76,10 +78,27 @@ public class LocationDao extends BaseDao implements Serializable {
 	return locationCategories;
     }
 
+    public String getName() {
+	return name;
+    }
+
+    public void setName(String name) {
+	this.name = name;
+    }
+
+    public String getEmail() {
+	return email;
+    }
+
+    public void setEmail(String email) {
+	this.email = email;
+    }
+
     @Override
     public String toString() {
-	return "LocationDao [phone=" + phone + ", latitude=" + latitude + ", longitude=" + longitude
-		+ ", locationCategories=" + locationCategories + ", company=" + company + ", address=" + address + "]";
+	return "LocationDao [phone=" + phone + ", latitude=" + latitude + ", longitude=" + longitude + ", name=" + name
+		+ ", email=" + email + ", locationCategories=" + locationCategories + ", company=" + company
+		+ ", address=" + address + "]";
     }
 
 }
