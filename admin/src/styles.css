@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 body {
     background-color: #1fbbe1;
     margin: 0px;
@@ -11,4 +13,12 @@ html,body, mat-sidenav-container, .content {
 
 .full-width {
     width: 100%;
+}
+
+.expandable-list-item-content {
+    display: none;
+}
+
+.expandable-list-item-content.expanded {
+    display: block;
 }

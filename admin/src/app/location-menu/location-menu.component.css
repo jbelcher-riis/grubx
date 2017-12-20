@@ -1,0 +1,22 @@
+.panel-body {
+    padding: 50px !important;
+}
+ul {
+    margin: 0px;
+}
+.list-group-item {
+    border: 0px;
+}
+.list-group-item:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
+.menu-container {
+    width: 100%;
+    margin-top: 10px;
+}
+.form-area {
+    min-height: 300px;
+    background-color: #fff;
+}
+

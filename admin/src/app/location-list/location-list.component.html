@@ -17,7 +17,7 @@
           <tr *ngFor="let location of locations">
             <td>{{location.name}}</td>
             <td>{{location.email}}</td>
-            <td>Configure</td>
+            <td><button type="button" class="btn btn-primary" routerLink="/dashboard/locations/{{location.id}}/menu">Configure Menu</button></td>
           </tr>
         </tbody>
       </table>
